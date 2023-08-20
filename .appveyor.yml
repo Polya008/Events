@@ -4,7 +4,7 @@ stack: node 16  # окружение
 
 branches:
   only:
-    - master  # ветка git
+    - main  # ветка git
 
 cache: node_modules  # кеширование
 
@@ -21,7 +21,7 @@ test_script:
 
 deploy_script:  # скрипт развёртывания
   - git config --global credential.helper store
-  - git config --global Polya008 AppVeyor
-  - git config --global polskaya007@mail.ru ci@appveyor.com
-  - echo "https://$GITHUB_TOKEN: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" > "$HOME/.git-credentials"
+  - git config --global user.name AppVeyor
+  - git config --global user.email ci@appveyor.com
+  - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
   - npx push-dir --dir=dist --branch=gh-pages --force --verbose
